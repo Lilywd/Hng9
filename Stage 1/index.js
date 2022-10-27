@@ -1,26 +1,24 @@
 const express = require("express");
+const cors = require("cors");
+
 const app = express();
-const PORT = process.env.PORT || 4000;
+const PORT = 4000;
 
+app.use(cors());
+app.use(express.json());
 
+app.get('/', (req, res) => {
+  const data = {
+    slackUsername: " ndungulilianwanjiku",
+    backend: true,
+    age: 25,
+    bio: " I am in the learning process of becoming a fullstack developer with a passion in skincare as well"
+  }
+  return res.json(data)
+})
 
-// create  a server with http variable
-
-const server = http.createServer(function(req,res) {
-// headers
-
-res.writeHead(200, {'content-Type':'application/json'}); //status code, content type object
-const data = {
-    "slackUsername" : "ndungulilianwanjiku",
-    "backend" : "True",
-    "age": 25,
-    "bio": "I am in the learning process of becoming a fullstack developer with a passion in skincare as well",
-}
-res.json(data); //send back  response in json
+app.listen(PORT, () => {
+  console.log(`server started on port ${PORT}`);
 });
 
 
-
-app.listen(PORT, () => {
-    console.log(`server started on port ${PORT}`);
-  });
